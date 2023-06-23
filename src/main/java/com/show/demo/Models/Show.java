@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "shows")
 @Entity
@@ -33,4 +35,6 @@ public class Show {
     private Theater theater;
 
 
+    @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
+    private List<Showseat> showseatList=new ArrayList<>();
 }

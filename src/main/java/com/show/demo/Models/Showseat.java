@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table
+@Table(name = "show_seats")
 @Entity
 @Data
 @Builder
@@ -18,7 +18,7 @@ public class Showseat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer seatNo;
+    private String seatNo;
 
     private Integer price;
 
@@ -28,5 +28,8 @@ public class Showseat {
     private boolean isAvailable;
     private boolean isFoodAttached;
 
+    @ManyToOne
+    @JoinColumn
+    private Show show;
 
 }
