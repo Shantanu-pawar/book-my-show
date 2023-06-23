@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Table(name = "users")
 @Entity
 @Data
@@ -25,4 +28,7 @@ public class User {
     private String mobileNo;
 
     private Integer age;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Ticket> ticketList=new ArrayList<>();
 }

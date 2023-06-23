@@ -37,4 +37,7 @@ public class Show {
 
     @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
     private List<Showseat> showseatList=new ArrayList<>();
+
+    @OneToMany(mappedBy = "show",cascade = CascadeType.ALL)
+    private List<Ticket> ticketList=new ArrayList<>();
 }

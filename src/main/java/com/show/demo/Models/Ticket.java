@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -23,14 +24,17 @@ public class Ticket {
 
     private Integer totalPrice;
 
-    private Integer bookedSeats;
+    private String bookedSeats;
 
-    private String bookingTime;
+    @CreationTimestamp
+    private Date bookedAt;
 
-    private Date date;
+    @ManyToOne
+    @JoinColumn
+    private Show show;
 
-    private String movieName;
-
-    private String theaterName;
+    @ManyToOne
+    @JoinColumn
+    private User user;
 }
 
