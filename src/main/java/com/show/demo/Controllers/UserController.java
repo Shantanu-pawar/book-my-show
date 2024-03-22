@@ -19,14 +19,12 @@ public class UserController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addUser(@RequestBody UserDto userDto){
-
         try {
            String result=userService.addUser(userDto);
             return new ResponseEntity<>(result, HttpStatus.CREATED);
         }catch (Exception e){
             return  new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
-
     }
 
     @GetMapping("/getOldestUser")
