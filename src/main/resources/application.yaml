@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: developement
+
+
+# We've set debug level so that in logs debug can also print
+logging:
+  level:
+    com:
+      show:
+        demo: DEBUG
+
+
+
+#if we wanted to off the logs then this is the direct way
+#logging:
+#  level:
+#    root: OFF

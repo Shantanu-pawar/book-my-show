@@ -1,14 +1,12 @@
 package com.show.demo.Controllers;
 
 import com.show.demo.DTOs.RequestDto.MovieDto;
+import com.show.demo.Models.Movie;
 import com.show.demo.Services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("movie")
@@ -17,13 +15,8 @@ public class MovieController {
     private MovieService movieService;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addMovie(@RequestBody MovieDto movieDto){
-        try {
-            String res=movieService.addMovie(movieDto);
-            return new ResponseEntity<>(res,HttpStatus.OK);
-
-        }catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<Movie> addMovie(@RequestBody MovieDto movieDto) {
+        Movie movieSaved = movieService.addMovie(movieDto);
+        return new ResponseEntity<Movie>(movieSaved, HttpStatus.OK);
     }
 }
